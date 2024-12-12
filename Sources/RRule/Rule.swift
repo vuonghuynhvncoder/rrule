@@ -55,7 +55,7 @@ public class Rule: Sequence {
     }
 
     public func from(startDate: Date, limit: Int) -> [Date] {
-        return allUntil(startDate: startDate.floorToSeconds(in: tz), endDate: maxDate, limit: limit).filter { $0 >= startDate.floorToSeconds(in: tz) }
+        return allUntil(endDate: maxDate, limit: limit).filter { $0 >= startDate.floorToSeconds(in: tz) }
     }
     
     func allUntil(startDate: Date? = nil, endDate: Date? = nil, limit: Int? = 31) -> [Date] {
