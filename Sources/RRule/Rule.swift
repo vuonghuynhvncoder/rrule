@@ -51,7 +51,7 @@ public class Rule: Sequence {
     }
     
     public func between(startDate: Date, endDate: Date, limit: Int? = nil) -> [Date] {
-        return allUntil(startDate: startDate.floorToSeconds(in: tz), endDate: endDate.floorToSeconds(in: tz), limit: limit).filter { $0 >= startDate.floorToSeconds(in: tz) }
+        return allUntil(endDate: endDate.floorToSeconds(in: tz), limit: limit).filter { $0 >= startDate.floorToSeconds(in: tz) }
     }
 
     public func from(startDate: Date, limit: Int) -> [Date] {
@@ -71,6 +71,10 @@ public class Rule: Sequence {
         }
         
         return results
+    }
+    
+    public func getOptionValue(option: String) -> Any? {
+        options[option]
     }
 
     func parseOptions(_ rule: String) throws -> [String: Any] {
